@@ -1,0 +1,31 @@
+<settings>
+    <!-- Repeatable medication list. The Garmin Connect app shows an "Add" (+)
+         button to append as many meds as you like; each entry has these fields.
+         "Times" may be left blank for a reference-only med (listed, no reminders). -->
+    <setting propertyKey="@Properties.cfgMeds" title="Medications" maxLength="50">
+        <setting title="Name" prompt="Medication name" type="string">
+            <settingConfig id="name" type="alphaNumeric" maxLength="24" required="true" />
+        </setting>
+        <setting title="Dose" prompt="e.g. 25mg" type="string">
+            <settingConfig id="dose" type="alphaNumeric" maxLength="16" />
+        </setting>
+        <setting title="Frequency" prompt="e.g. 3x a day" type="string">
+            <settingConfig id="freq" type="alphaNumeric" maxLength="24" />
+        </setting>
+        <setting title="Times" prompt="e.g. 09:00 21:00" type="string">
+            <settingConfig id="times" type="alphaNumeric" maxLength="40" />
+        </setting>
+        <setting title="Reminders on" type="boolean">
+            <settingConfig id="enabled" type="boolean" />
+        </setting>
+        <defaults>
+            <entry>
+                <default id="name"></default>
+                <default id="dose"></default>
+                <default id="freq"></default>
+                <default id="times"></default>
+                <default id="enabled">true</default>
+            </entry>
+        </defaults>
+    </setting>
+</settings>

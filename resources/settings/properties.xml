@@ -1,0 +1,9 @@
+<properties>
+    <!-- A single repeatable array. In the Garmin Connect app this renders as a
+         list with an "Add" (+) button; each entry expands to the fields below.
+         IMPORT-ONLY: onSettingsChanged upserts these (by name) into the
+         watch-owned med list in Application.Storage, so on-watch edits are never
+         clobbered. In code this comes back as an Array<Dictionary> keyed by the
+         settingConfig ids (name/dose/freq/times/enabled). -->
+    <property id="cfgMeds" type="array" />
+</properties>

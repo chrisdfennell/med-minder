@@ -1,0 +1,26 @@
+<strings>
+    <string id="AppName">MedMinder</string>
+
+    <!-- Today view -->
+    <string id="NoMeds">No meds yet</string>
+    <string id="AddInSettings">Add in phone settings or the menu</string>
+    <string id="AllDone">All done today</string>
+    <string id="DayStreak">day streak</string>
+
+    <!-- Status labels -->
+    <string id="Taken">Taken</string>
+    <string id="Skipped">Skipped</string>
+    <string id="Missed">Missed</string>
+    <string id="Due">Due</string>
+    <string id="Upcoming">Upcoming</string>
+
+    <!-- Action menu -->
+    <string id="MenuTitle">Dose</string>
+    <string id="MarkTaken">Mark taken</string>
+    <string id="MarkSkipped">Skip dose</string>
+    <string id="ClearStatus">Clear status</string>
+
+    <!-- Glance -->
+    <string id="GlanceNext">Next</string>
+    <string id="GlanceClear">Nothing due</string>
+</strings>

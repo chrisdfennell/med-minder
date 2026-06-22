@@ -1,0 +1,23 @@
+# Build output
+bin/
+gen/
+*-mir/
+*.prg
+*.iq
+*.debug.xml
+
+# Connect IQ developer signing key (NEVER commit)
+*.der
+
+# Local, machine-specific build config (build.ps1 regenerates it)
+build_config.json
+
+# Transient simulator captures (curated screenshots in assets/ are committed)
+assets/screen_active.png
+assets/screen_active_scaled.png
+assets/zoom_rows.png
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.claude/
