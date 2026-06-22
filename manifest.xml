@@ -3,12 +3,12 @@
     <!-- Production application id. Keep this CONSTANT once published — changing
          it creates a separate store listing (orphaning reviews and installs). -->
     <iq:application
-        id="b2c9a1e4-5d3f-4a76-9c1b-0e8f7a6d2c54"
+        id="d1662e77-55a5-4116-968b-b9d9c958ffc2"
         type="watch-app"
         name="@Strings.AppName"
         entry="MedMinderApp"
         launcherIcon="@Drawables.LauncherIcon"
-        version="1.2.0"
+        version="1.2.1"
         minSdkVersion="4.0.0">
 
         <iq:products>

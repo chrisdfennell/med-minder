@@ -6,7 +6,7 @@ param(
 
 # App identity (keep in sync with manifest.xml)
 $AppName = "MedMinder"
-$AppId = "b2c9a1e4-5d3f-4a76-9c1b-0e8f7a6d2c54"
+$AppId = "d1662e77-55a5-4116-968b-b9d9c958ffc2"
 
 # Load local build configuration or create default if missing
 $configFile = Join-Path $PSScriptRoot "build_config.json"
