@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <iq:manifest xmlns:iq="http://www.garmin.com/xml/connectiq" version="3">
-    <!-- Replace this UUID with your production application id before publishing. -->
+    <!-- Production application id. Keep this CONSTANT once published — changing
+         it creates a separate store listing (orphaning reviews and installs). -->
     <iq:application
         id="b2c9a1e4-5d3f-4a76-9c1b-0e8f7a6d2c54"
         type="watch-app"

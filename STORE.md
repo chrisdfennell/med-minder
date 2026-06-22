@@ -45,7 +45,7 @@ Initial release: today's doses with time-grouping and take-all, an adherence str
 ---
 
 ## ✅ Pre-publish checklist
-- [ ] **Set a production app id.** `manifest.xml` ships with a placeholder UUID. Generate the listing on the developer portal and put its app id in `manifest.xml` (`<iq:application id="…">`).
+- [x] **App id set** in `manifest.xml` (`b2c9a1e4-…`). Keep it constant once published — never change it after the first release.
 - [ ] **`DEBUG_SEED = false`** in `source/DebugSeed.mc` (it is, by default). For a fully clean build you can also delete `DebugSeed.mc` and its call in `MedMinderApp.onStart`.
 - [ ] **Developer verification** complete on the portal (required to list apps).
 - [ ] Build the package: `./build.ps1 -Export` → `bin/MedMinder.iq`.
