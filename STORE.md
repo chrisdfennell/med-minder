@@ -23,8 +23,8 @@ MEDICINE LIST
 • Add "as needed" meds with no set times — they're listed without daily reminders.
 • Tap any med for full details: dose, frequency, times, and which days.
 
-ADD AS MANY AS YOU LIKE
-• Open MedMinder's settings in the Garmin Connect app and tap Add to enter unlimited medications.
+ADD YOUR MEDS
+• Open MedMinder's settings in the Garmin Connect app and fill in any of 20 medication slots — name, dose, days, and up to four daily times from a time picker.
 • Works with both buttons and touchscreens, on round MIP and AMOLED watches.
 
 Not a medical device. MedMinder helps you remember and record doses; always follow your prescriber's and pharmacist's instructions.
@@ -33,7 +33,7 @@ Not a medical device. MedMinder helps you remember and record doses; always foll
 Health & Fitness  (Productivity is an acceptable alternative)
 
 ## What's new (v1.0.0)
-Initial release: today's doses with time-grouping and take-all, an adherence streak, a medicine list with per-med detail, a glance, and unlimited medications added from the Garmin Connect app.
+Initial release: today's doses with time-grouping and take-all, an adherence streak, a medicine list with per-med detail, a glance, and up to 20 medications added from the Garmin Connect app with day and time pickers.
 
 ## Permissions
 - **Background** — reserved for upcoming dose reminders. (No location, no internet, no health data is accessed.)
@@ -49,5 +49,5 @@ Initial release: today's doses with time-grouping and take-all, an adherence str
 - [ ] **`DEBUG_SEED = false`** in `source/DebugSeed.mc` (it is, by default). For a fully clean build you can also delete `DebugSeed.mc` and its call in `MedMinderApp.onStart`.
 - [ ] **Developer verification** complete on the portal (required to list apps).
 - [ ] Build the package: `./build.ps1 -Export` → `bin/MedMinder.iq`.
-- [ ] Test the **Add medication** flow in the real Garmin Connect app (array settings don't render in the simulator).
+- [ ] Test the **medication slots** flow: set name/dose/days/times in Garmin Connect, sync, and confirm they appear on the watch's Today and Medicine list.
 - [ ] Confirm the app launches and the medicine list is empty on first run (fresh install).

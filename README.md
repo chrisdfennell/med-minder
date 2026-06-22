@@ -44,13 +44,13 @@
 
 ### 📋 Medicines — your medicine list
 - A neat, scrollable catalog of **everything you take** — name, dose, and frequency.
-- **Frequency your way** — type it ("3x a day") or leave it blank and MedMinder derives it ("2x daily", "Once daily") from the schedule.
+- **Frequency, automatically** — MedMinder derives it ("2x daily", "Once daily", "As needed") from the times you pick.
 - **Reference-only meds** — list something taken "as needed" with no times, and it stays off your daily reminders.
 - **Tap any med** for a full detail card: dose, frequency, times, and which days.
 
 ### ✍️ Add your meds
-- **In the Garmin Connect app** — open MedMinder's settings and tap **Add** to enter as many medications as you like (name, dose, frequency, times). Truly unlimited.
-- Edits sync to the watch automatically; meds you manage on the watch are never overwritten.
+- **In the Garmin Connect app** — open MedMinder's settings and fill in any of the **20 medication slots**: name, dose, days, and up to four daily times chosen from a **time picker** (no typing times by hand).
+- Leave a slot's **Name** blank to remove that medication. Your settings sync to the watch and rebuild the list automatically.
 
 ### ⌚ Works the way your watch does
 - **Buttons and touch** — full button navigation *and* swipe/tap on touchscreen models.

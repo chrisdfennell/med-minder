@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 128px; height: 128px; overflow: hidden; background: transparent; }
+  .wrap { width: 128px; height: 128px; }
+  svg { display: block; }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <svg width="128" height="128" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
+      <g transform="translate(64 64) rotate(-32) scale(0.38) translate(-125 -58)">
+        <!-- red (left) half -->
+        <path d="M58 0 H125 V116 H58 A58 58 0 0 1 58 0 Z" fill="#DA3741"/>
+        <!-- white (right) half -->
+        <path d="M125 0 H192 A58 58 0 0 1 192 116 H125 Z" fill="#FFFFFF"/>
+        <!-- seam -->
+        <rect x="120" y="0" width="10" height="116" fill="#1A1D24"/>
+        <!-- outline -->
+        <path d="M58 0 H192 A58 58 0 0 1 192 116 H58 A58 58 0 0 1 58 0 Z"
+              fill="none" stroke="#1A1D24" stroke-width="10"/>
+      </g>
+    </svg>
+  </div>
+</body>
+</html>

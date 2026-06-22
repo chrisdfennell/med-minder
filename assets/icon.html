@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 500px; height: 500px; overflow: hidden; }
+  .tile {
+    width: 500px; height: 500px; position: relative;
+    font-family: "Segoe UI", "Roboto", system-ui, -apple-system, sans-serif;
+    /* simple solid-ish brand background — clearly a color, not black/transparent */
+    background: radial-gradient(circle at 50% 38%, #3f8fd6 0%, #1f63ad 58%, #184f8c 100%);
+  }
+  .pill {
+    position: absolute; left: 50%; top: 188px;
+    width: 246px; height: 113px;
+    transform: translate(-50%, -50%) rotate(-32deg);
+  }
+  .pill svg { display: block; }
+  .name {
+    position: absolute; left: 0; right: 0; top: 312px;
+    text-align: center; color: #ffffff;
+    font-size: 70px; font-weight: 800; letter-spacing: -1.5px;
+  }
+  .name .minder { color: #cfe6fb; }
+</style>
+</head>
+<body>
+  <div class="tile">
+    <div class="pill">
+      <svg width="246" height="113" viewBox="0 0 250 116" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="red" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#ef5560"/>
+            <stop offset="1" stop-color="#d4313b"/>
+          </linearGradient>
+          <linearGradient id="white" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#ffffff"/>
+            <stop offset="1" stop-color="#eef1f4"/>
+          </linearGradient>
+        </defs>
+        <path d="M58 0 H125 V116 H58 A58 58 0 0 1 58 0 Z" fill="url(#red)"/>
+        <path d="M125 0 H192 A58 58 0 0 1 192 116 H125 Z" fill="url(#white)"/>
+        <rect x="121" y="0" width="8" height="116" fill="#16365c"/>
+      </svg>
+    </div>
+    <div class="name"><span class="med">Med</span><span class="minder">Minder</span></div>
+  </div>
+</body>
+</html>

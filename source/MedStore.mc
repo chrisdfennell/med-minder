@@ -16,9 +16,16 @@ const STATUS_PARTIAL = 4; // display-only: a group with a mix of statuses
 const ALL_DAYS = 0x7F; // bit0=Sun .. bit6=Sat
 const LOG_RETENTION_DAYS = 90;
 
-// MedStore owns all persistence. The med list is watch-authoritative; phone
-// settings only feed in through importFromSettings() (upsert by name), so an
-// on-watch edit is never clobbered by a settings sync.
+// Number of fixed medication slots exposed in phone settings. Must match the
+// cfgM<n>* properties generated in resources/settings/. Bump this and
+// regenerate the settings/properties XML to offer more slots.
+const SLOT_COUNT = 20;
+const TIMES_PER_MED = 4;
+
+// MedStore owns all persistence. Phone settings are the source of truth for the
+// med list: importFromSettings() rebuilds the watch-owned list from the fixed
+// cfgM<n>* slots on every launch and settings sync. The adherence log is keyed
+// by med id (= slot number), which stays stable as long as a med keeps its slot.
 //
 // Values come back from Storage as a poly ValueType, so reads are cast at the
 // point of use (Number/String/Boolean/Array) to satisfy strict type checking.
@@ -114,34 +121,65 @@ class MedStore {
 
     // ---- phone settings import ----
 
-    // Read the repeatable "cfgMeds" array from phone settings (Array<Dictionary>
-    // keyed by name/dose/freq/times/enabled) and upsert each entry by name.
+    // Typed, null-safe property reads. Properties defined in properties.xml carry
+    // defaults, but a sync mid-write can transiently return null, so we guard.
+    static function propStr(key as String) as String {
+        var v;
+        try { v = Application.Properties.getValue(key); } catch (ex) { v = null; }
+        return (v == null) ? "" : (v as String);
+    }
+
+    static function propNum(key as String, dflt as Number) as Number {
+        var v;
+        try { v = Application.Properties.getValue(key); } catch (ex) { v = null; }
+        return (v == null) ? dflt : (v as Number);
+    }
+
+    static function propBool(key as String, dflt as Boolean) as Boolean {
+        var v;
+        try { v = Application.Properties.getValue(key); } catch (ex) { v = null; }
+        return (v == null) ? dflt : (v as Boolean);
+    }
+
+    // Rebuild the watch-owned med list from the fixed cfgM<n>* phone-settings
+    // slots. A blank Name means an empty/disabled slot and is skipped. Each med's
+    // id is its slot number, so the adherence log (keyed by id) stays stable.
     static function importFromSettings() as Void {
-        var arr;
-        try {
-            arr = Application.Properties.getValue("cfgMeds");
-        } catch (ex) {
-            arr = null;
-        }
-        if (arr == null) {
-            return;
-        }
-        var list = arr as Array<Dictionary>;
-        for (var i = 0; i < list.size(); i++) {
-            var e = list[i];
-            if (e == null || e["name"] == null) {
-                continue;
-            }
-            var name = strTrim(e["name"] as String);
+        var meds = [] as Array<Dictionary>;
+        for (var i = 1; i <= SLOT_COUNT; i++) {
+            var p = "cfgM" + i.format("%d");
+            var name = strTrim(propStr(p + "Name"));
             if (name.length() == 0) {
                 continue;
             }
-            var dose = (e["dose"] == null) ? "" : (e["dose"] as String);
-            var freq = (e["freq"] == null) ? "" : (e["freq"] as String);
-            var times = parseTimes((e["times"] == null) ? "" : (e["times"] as String));
-            var enabled = (e["enabled"] == null) ? true : (e["enabled"] as Boolean);
-            upsert(name, dose, freq, times, ALL_DAYS, enabled);
+            var times = [] as Array<Number>;
+            for (var t = 1; t <= TIMES_PER_MED; t++) {
+                var mins = propNum(p + "T" + t.format("%d"), -1);
+                if (mins >= 0 && !contains(times, mins)) {
+                    times.add(mins);
+                }
+            }
+            // sort times ascending (insertion sort)
+            for (var a = 1; a < times.size(); a++) {
+                var key = times[a];
+                var b = a - 1;
+                while (b >= 0 && times[b] > key) {
+                    times[b + 1] = times[b];
+                    b--;
+                }
+                times[b + 1] = key;
+            }
+            meds.add({
+                "id" => i,
+                "name" => name,
+                "dose" => strTrim(propStr(p + "Dose")),
+                "freq" => "",
+                "times" => times,
+                "days" => propNum(p + "Days", ALL_DAYS),
+                "enabled" => propBool(p + "On", true)
+            });
         }
+        saveMeds(meds);
     }
 
     // ---- adherence log ----
