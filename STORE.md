@@ -24,7 +24,7 @@ MEDICINE LIST
 • Tap any med for full details: dose, frequency, times, and which days.
 
 ADD YOUR MEDS
-• Open MedMinder's settings in the Garmin Connect app and fill in any of 14 medication slots — each its own collapsible section with name, dose, days, and up to four daily reminder times from dropdown pickers.
+• Open MedMinder's settings in the Garmin Connect app and fill in any of 18 medication slots — each its own collapsible section with name, dose, days, and up to four daily reminder times from dropdown pickers.
 • Works with both buttons and touchscreens, on round MIP and AMOLED watches.
 
 Not a medical device. MedMinder helps you remember and record doses; always follow your prescriber's and pharmacist's instructions.
@@ -32,8 +32,8 @@ Not a medical device. MedMinder helps you remember and record doses; always foll
 ## Category
 Health & Fitness  (Productivity is an acceptable alternative)
 
-## What's new (v1.2.1)
-Today's doses with time-grouping and take-all, an adherence streak, a medicine list with per-med detail, a glance, and up to 14 medications added from the Garmin Connect app — each in its own collapsible section with day and hourly time pickers.
+## What's new (v1.3.0)
+Today's doses with time-grouping and take-all, an adherence streak, a medicine list with per-med detail, a glance, and up to 18 medications added from the Garmin Connect app — each in its own collapsible section with day and hourly time pickers.
 
 ## Permissions
 - **Background** — reserved for upcoming dose reminders. (No location, no internet, no health data is accessed.)

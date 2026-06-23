@@ -1,5 +1,5 @@
 <properties>
-    <!-- GENERATED to match settings.xml. 14 slots x 8 fields = 112 properties.
+    <!-- GENERATED to match settings.xml. 18 slots x 8 fields = 144 properties.
          Kept well under Garmin's ~8K total-properties-data limit so saves
          from Connect Mobile succeed. Times are hourly = minutes after midnight;
          -1 = none. Leave a slot's Name blank to disable that medication. -->
@@ -115,4 +115,36 @@
     <property id="cfgM14T3" type="number">-1</property>
     <property id="cfgM14T4" type="number">-1</property>
     <property id="cfgM14On" type="boolean">true</property>
+    <property id="cfgM15Name" type="string"></property>
+    <property id="cfgM15Dose" type="string"></property>
+    <property id="cfgM15Days" type="number">127</property>
+    <property id="cfgM15T1" type="number">-1</property>
+    <property id="cfgM15T2" type="number">-1</property>
+    <property id="cfgM15T3" type="number">-1</property>
+    <property id="cfgM15T4" type="number">-1</property>
+    <property id="cfgM15On" type="boolean">true</property>
+    <property id="cfgM16Name" type="string"></property>
+    <property id="cfgM16Dose" type="string"></property>
+    <property id="cfgM16Days" type="number">127</property>
+    <property id="cfgM16T1" type="number">-1</property>
+    <property id="cfgM16T2" type="number">-1</property>
+    <property id="cfgM16T3" type="number">-1</property>
+    <property id="cfgM16T4" type="number">-1</property>
+    <property id="cfgM16On" type="boolean">true</property>
+    <property id="cfgM17Name" type="string"></property>
+    <property id="cfgM17Dose" type="string"></property>
+    <property id="cfgM17Days" type="number">127</property>
+    <property id="cfgM17T1" type="number">-1</property>
+    <property id="cfgM17T2" type="number">-1</property>
+    <property id="cfgM17T3" type="number">-1</property>
+    <property id="cfgM17T4" type="number">-1</property>
+    <property id="cfgM17On" type="boolean">true</property>
+    <property id="cfgM18Name" type="string"></property>
+    <property id="cfgM18Dose" type="string"></property>
+    <property id="cfgM18Days" type="number">127</property>
+    <property id="cfgM18T1" type="number">-1</property>
+    <property id="cfgM18T2" type="number">-1</property>
+    <property id="cfgM18T3" type="number">-1</property>
+    <property id="cfgM18T4" type="number">-1</property>
+    <property id="cfgM18On" type="boolean">true</property>
 </properties>

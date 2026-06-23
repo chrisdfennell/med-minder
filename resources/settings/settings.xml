@@ -1,5 +1,5 @@
 <settings>
-    <!-- GENERATED: 14 medication slots, each in its own collapsible group.
+    <!-- GENERATED: 18 medication slots, each in its own collapsible group.
          Flat number/string/list/boolean settings sync reliably (unlike arrays).
          Leave a slot's Name blank to disable/delete that medication.
          Times are hourly dropdowns = minutes after midnight; -1 = none. -->
@@ -1890,6 +1890,546 @@
             </settingConfig>
         </setting>
         <setting propertyKey="@Properties.cfgM14On" title="Reminders on">
+            <settingConfig type="boolean" />
+        </setting>
+    </group>
+
+    <group id="med15Grp" title="Medication 15">
+        <setting propertyKey="@Properties.cfgM15Name" title="Name" prompt="Leave blank to disable this slot">
+            <settingConfig type="alphaNumeric" maxLength="24" />
+        </setting>
+        <setting propertyKey="@Properties.cfgM15Dose" title="Dose" prompt="e.g. 25 mg">
+            <settingConfig type="alphaNumeric" maxLength="16" />
+        </setting>
+        <setting propertyKey="@Properties.cfgM15Days" title="Days">
+            <settingConfig type="list">
+                <listEntry value="127">Every day</listEntry>
+                <listEntry value="62">Weekdays (Mon-Fri)</listEntry>
+                <listEntry value="65">Weekends (Sat-Sun)</listEntry>
+            </settingConfig>
+        </setting>
+        <setting propertyKey="@Properties.cfgM15T1" title="Time 1">
+            <settingConfig type="list">
+                <listEntry value="-1">(none)</listEntry>
+                <listEntry value="0">12 AM</listEntry>
+                <listEntry value="60">1 AM</listEntry>
+                <listEntry value="120">2 AM</listEntry>
+                <listEntry value="180">3 AM</listEntry>
+                <listEntry value="240">4 AM</listEntry>
+                <listEntry value="300">5 AM</listEntry>
+                <listEntry value="360">6 AM</listEntry>
+                <listEntry value="420">7 AM</listEntry>
+                <listEntry value="480">8 AM</listEntry>
+                <listEntry value="540">9 AM</listEntry>
+                <listEntry value="600">10 AM</listEntry>
+                <listEntry value="660">11 AM</listEntry>
+                <listEntry value="720">12 PM</listEntry>
+                <listEntry value="780">1 PM</listEntry>
+                <listEntry value="840">2 PM</listEntry>
+                <listEntry value="900">3 PM</listEntry>
+                <listEntry value="960">4 PM</listEntry>
+                <listEntry value="1020">5 PM</listEntry>
+                <listEntry value="1080">6 PM</listEntry>
+                <listEntry value="1140">7 PM</listEntry>
+                <listEntry value="1200">8 PM</listEntry>
+                <listEntry value="1260">9 PM</listEntry>
+                <listEntry value="1320">10 PM</listEntry>
+                <listEntry value="1380">11 PM</listEntry>
+            </settingConfig>
+        </setting>
+        <setting propertyKey="@Properties.cfgM15T2" title="Time 2">
+            <settingConfig type="list">
+                <listEntry value="-1">(none)</listEntry>
+                <listEntry value="0">12 AM</listEntry>
+                <listEntry value="60">1 AM</listEntry>
+                <listEntry value="120">2 AM</listEntry>
+                <listEntry value="180">3 AM</listEntry>
+                <listEntry value="240">4 AM</listEntry>
+                <listEntry value="300">5 AM</listEntry>
+                <listEntry value="360">6 AM</listEntry>
+                <listEntry value="420">7 AM</listEntry>
+                <listEntry value="480">8 AM</listEntry>
+                <listEntry value="540">9 AM</listEntry>
+                <listEntry value="600">10 AM</listEntry>
+                <listEntry value="660">11 AM</listEntry>
+                <listEntry value="720">12 PM</listEntry>
+                <listEntry value="780">1 PM</listEntry>
+                <listEntry value="840">2 PM</listEntry>
+                <listEntry value="900">3 PM</listEntry>
+                <listEntry value="960">4 PM</listEntry>
+                <listEntry value="1020">5 PM</listEntry>
+                <listEntry value="1080">6 PM</listEntry>
+                <listEntry value="1140">7 PM</listEntry>
+                <listEntry value="1200">8 PM</listEntry>
+                <listEntry value="1260">9 PM</listEntry>
+                <listEntry value="1320">10 PM</listEntry>
+                <listEntry value="1380">11 PM</listEntry>
+            </settingConfig>
+        </setting>
+        <setting propertyKey="@Properties.cfgM15T3" title="Time 3">
+            <settingConfig type="list">
+                <listEntry value="-1">(none)</listEntry>
+                <listEntry value="0">12 AM</listEntry>
+                <listEntry value="60">1 AM</listEntry>
+                <listEntry value="120">2 AM</listEntry>
+                <listEntry value="180">3 AM</listEntry>
+                <listEntry value="240">4 AM</listEntry>
+                <listEntry value="300">5 AM</listEntry>
+                <listEntry value="360">6 AM</listEntry>
+                <listEntry value="420">7 AM</listEntry>
+                <listEntry value="480">8 AM</listEntry>
+                <listEntry value="540">9 AM</listEntry>
+                <listEntry value="600">10 AM</listEntry>
+                <listEntry value="660">11 AM</listEntry>
+                <listEntry value="720">12 PM</listEntry>
+                <listEntry value="780">1 PM</listEntry>
+                <listEntry value="840">2 PM</listEntry>
+                <listEntry value="900">3 PM</listEntry>
+                <listEntry value="960">4 PM</listEntry>
+                <listEntry value="1020">5 PM</listEntry>
+                <listEntry value="1080">6 PM</listEntry>
+                <listEntry value="1140">7 PM</listEntry>
+                <listEntry value="1200">8 PM</listEntry>
+                <listEntry value="1260">9 PM</listEntry>
+                <listEntry value="1320">10 PM</listEntry>
+                <listEntry value="1380">11 PM</listEntry>
+            </settingConfig>
+        </setting>
+        <setting propertyKey="@Properties.cfgM15T4" title="Time 4">
+            <settingConfig type="list">
+                <listEntry value="-1">(none)</listEntry>
+                <listEntry value="0">12 AM</listEntry>
+                <listEntry value="60">1 AM</listEntry>
+                <listEntry value="120">2 AM</listEntry>
+                <listEntry value="180">3 AM</listEntry>
+                <listEntry value="240">4 AM</listEntry>
+                <listEntry value="300">5 AM</listEntry>
+                <listEntry value="360">6 AM</listEntry>
+                <listEntry value="420">7 AM</listEntry>
+                <listEntry value="480">8 AM</listEntry>
+                <listEntry value="540">9 AM</listEntry>
+                <listEntry value="600">10 AM</listEntry>
+                <listEntry value="660">11 AM</listEntry>
+                <listEntry value="720">12 PM</listEntry>
+                <listEntry value="780">1 PM</listEntry>
+                <listEntry value="840">2 PM</listEntry>
+                <listEntry value="900">3 PM</listEntry>
+                <listEntry value="960">4 PM</listEntry>
+                <listEntry value="1020">5 PM</listEntry>
+                <listEntry value="1080">6 PM</listEntry>
+                <listEntry value="1140">7 PM</listEntry>
+                <listEntry value="1200">8 PM</listEntry>
+                <listEntry value="1260">9 PM</listEntry>
+                <listEntry value="1320">10 PM</listEntry>
+                <listEntry value="1380">11 PM</listEntry>
+            </settingConfig>
+        </setting>
+        <setting propertyKey="@Properties.cfgM15On" title="Reminders on">
+            <settingConfig type="boolean" />
+        </setting>
+    </group>
+
+    <group id="med16Grp" title="Medication 16">
+        <setting propertyKey="@Properties.cfgM16Name" title="Name" prompt="Leave blank to disable this slot">
+            <settingConfig type="alphaNumeric" maxLength="24" />
+        </setting>
+        <setting propertyKey="@Properties.cfgM16Dose" title="Dose" prompt="e.g. 25 mg">
+            <settingConfig type="alphaNumeric" maxLength="16" />
+        </setting>
+        <setting propertyKey="@Properties.cfgM16Days" title="Days">
+            <settingConfig type="list">
+                <listEntry value="127">Every day</listEntry>
+                <listEntry value="62">Weekdays (Mon-Fri)</listEntry>
+                <listEntry value="65">Weekends (Sat-Sun)</listEntry>
+            </settingConfig>
+        </setting>
+        <setting propertyKey="@Properties.cfgM16T1" title="Time 1">
+            <settingConfig type="list">
+                <listEntry value="-1">(none)</listEntry>
+                <listEntry value="0">12 AM</listEntry>
+                <listEntry value="60">1 AM</listEntry>
+                <listEntry value="120">2 AM</listEntry>
+                <listEntry value="180">3 AM</listEntry>
+                <listEntry value="240">4 AM</listEntry>
+                <listEntry value="300">5 AM</listEntry>
+                <listEntry value="360">6 AM</listEntry>
+                <listEntry value="420">7 AM</listEntry>
+                <listEntry value="480">8 AM</listEntry>
+                <listEntry value="540">9 AM</listEntry>
+                <listEntry value="600">10 AM</listEntry>
+                <listEntry value="660">11 AM</listEntry>
+                <listEntry value="720">12 PM</listEntry>
+                <listEntry value="780">1 PM</listEntry>
+                <listEntry value="840">2 PM</listEntry>
+                <listEntry value="900">3 PM</listEntry>
+                <listEntry value="960">4 PM</listEntry>
+                <listEntry value="1020">5 PM</listEntry>
+                <listEntry value="1080">6 PM</listEntry>
+                <listEntry value="1140">7 PM</listEntry>
+                <listEntry value="1200">8 PM</listEntry>
+                <listEntry value="1260">9 PM</listEntry>
+                <listEntry value="1320">10 PM</listEntry>
+                <listEntry value="1380">11 PM</listEntry>
+            </settingConfig>
+        </setting>
+        <setting propertyKey="@Properties.cfgM16T2" title="Time 2">
+            <settingConfig type="list">
+                <listEntry value="-1">(none)</listEntry>
+                <listEntry value="0">12 AM</listEntry>
+                <listEntry value="60">1 AM</listEntry>
+                <listEntry value="120">2 AM</listEntry>
+                <listEntry value="180">3 AM</listEntry>
+                <listEntry value="240">4 AM</listEntry>
+                <listEntry value="300">5 AM</listEntry>
+                <listEntry value="360">6 AM</listEntry>
+                <listEntry value="420">7 AM</listEntry>
+                <listEntry value="480">8 AM</listEntry>
+                <listEntry value="540">9 AM</listEntry>
+                <listEntry value="600">10 AM</listEntry>
+                <listEntry value="660">11 AM</listEntry>
+                <listEntry value="720">12 PM</listEntry>
+                <listEntry value="780">1 PM</listEntry>
+                <listEntry value="840">2 PM</listEntry>
+                <listEntry value="900">3 PM</listEntry>
+                <listEntry value="960">4 PM</listEntry>
+                <listEntry value="1020">5 PM</listEntry>
+                <listEntry value="1080">6 PM</listEntry>
+                <listEntry value="1140">7 PM</listEntry>
+                <listEntry value="1200">8 PM</listEntry>
+                <listEntry value="1260">9 PM</listEntry>
+                <listEntry value="1320">10 PM</listEntry>
+                <listEntry value="1380">11 PM</listEntry>
+            </settingConfig>
+        </setting>
+        <setting propertyKey="@Properties.cfgM16T3" title="Time 3">
+            <settingConfig type="list">
+                <listEntry value="-1">(none)</listEntry>
+                <listEntry value="0">12 AM</listEntry>
+                <listEntry value="60">1 AM</listEntry>
+                <listEntry value="120">2 AM</listEntry>
+                <listEntry value="180">3 AM</listEntry>
+                <listEntry value="240">4 AM</listEntry>
+                <listEntry value="300">5 AM</listEntry>
+                <listEntry value="360">6 AM</listEntry>
+                <listEntry value="420">7 AM</listEntry>
+                <listEntry value="480">8 AM</listEntry>
+                <listEntry value="540">9 AM</listEntry>
+                <listEntry value="600">10 AM</listEntry>
+                <listEntry value="660">11 AM</listEntry>
+                <listEntry value="720">12 PM</listEntry>
+                <listEntry value="780">1 PM</listEntry>
+                <listEntry value="840">2 PM</listEntry>
+                <listEntry value="900">3 PM</listEntry>
+                <listEntry value="960">4 PM</listEntry>
+                <listEntry value="1020">5 PM</listEntry>
+                <listEntry value="1080">6 PM</listEntry>
+                <listEntry value="1140">7 PM</listEntry>
+                <listEntry value="1200">8 PM</listEntry>
+                <listEntry value="1260">9 PM</listEntry>
+                <listEntry value="1320">10 PM</listEntry>
+                <listEntry value="1380">11 PM</listEntry>
+            </settingConfig>
+        </setting>
+        <setting propertyKey="@Properties.cfgM16T4" title="Time 4">
+            <settingConfig type="list">
+                <listEntry value="-1">(none)</listEntry>
+                <listEntry value="0">12 AM</listEntry>
+                <listEntry value="60">1 AM</listEntry>
+                <listEntry value="120">2 AM</listEntry>
+                <listEntry value="180">3 AM</listEntry>
+                <listEntry value="240">4 AM</listEntry>
+                <listEntry value="300">5 AM</listEntry>
+                <listEntry value="360">6 AM</listEntry>
+                <listEntry value="420">7 AM</listEntry>
+                <listEntry value="480">8 AM</listEntry>
+                <listEntry value="540">9 AM</listEntry>
+                <listEntry value="600">10 AM</listEntry>
+                <listEntry value="660">11 AM</listEntry>
+                <listEntry value="720">12 PM</listEntry>
+                <listEntry value="780">1 PM</listEntry>
+                <listEntry value="840">2 PM</listEntry>
+                <listEntry value="900">3 PM</listEntry>
+                <listEntry value="960">4 PM</listEntry>
+                <listEntry value="1020">5 PM</listEntry>
+                <listEntry value="1080">6 PM</listEntry>
+                <listEntry value="1140">7 PM</listEntry>
+                <listEntry value="1200">8 PM</listEntry>
+                <listEntry value="1260">9 PM</listEntry>
+                <listEntry value="1320">10 PM</listEntry>
+                <listEntry value="1380">11 PM</listEntry>
+            </settingConfig>
+        </setting>
+        <setting propertyKey="@Properties.cfgM16On" title="Reminders on">
+            <settingConfig type="boolean" />
+        </setting>
+    </group>
+
+    <group id="med17Grp" title="Medication 17">
+        <setting propertyKey="@Properties.cfgM17Name" title="Name" prompt="Leave blank to disable this slot">
+            <settingConfig type="alphaNumeric" maxLength="24" />
+        </setting>
+        <setting propertyKey="@Properties.cfgM17Dose" title="Dose" prompt="e.g. 25 mg">
+            <settingConfig type="alphaNumeric" maxLength="16" />
+        </setting>
+        <setting propertyKey="@Properties.cfgM17Days" title="Days">
+            <settingConfig type="list">
+                <listEntry value="127">Every day</listEntry>
+                <listEntry value="62">Weekdays (Mon-Fri)</listEntry>
+                <listEntry value="65">Weekends (Sat-Sun)</listEntry>
+            </settingConfig>
+        </setting>
+        <setting propertyKey="@Properties.cfgM17T1" title="Time 1">
+            <settingConfig type="list">
+                <listEntry value="-1">(none)</listEntry>
+                <listEntry value="0">12 AM</listEntry>
+                <listEntry value="60">1 AM</listEntry>
+                <listEntry value="120">2 AM</listEntry>
+                <listEntry value="180">3 AM</listEntry>
+                <listEntry value="240">4 AM</listEntry>
+                <listEntry value="300">5 AM</listEntry>
+                <listEntry value="360">6 AM</listEntry>
+                <listEntry value="420">7 AM</listEntry>
+                <listEntry value="480">8 AM</listEntry>
+                <listEntry value="540">9 AM</listEntry>
+                <listEntry value="600">10 AM</listEntry>
+                <listEntry value="660">11 AM</listEntry>
+                <listEntry value="720">12 PM</listEntry>
+                <listEntry value="780">1 PM</listEntry>
+                <listEntry value="840">2 PM</listEntry>
+                <listEntry value="900">3 PM</listEntry>
+                <listEntry value="960">4 PM</listEntry>
+                <listEntry value="1020">5 PM</listEntry>
+                <listEntry value="1080">6 PM</listEntry>
+                <listEntry value="1140">7 PM</listEntry>
+                <listEntry value="1200">8 PM</listEntry>
+                <listEntry value="1260">9 PM</listEntry>
+                <listEntry value="1320">10 PM</listEntry>
+                <listEntry value="1380">11 PM</listEntry>
+            </settingConfig>
+        </setting>
+        <setting propertyKey="@Properties.cfgM17T2" title="Time 2">
+            <settingConfig type="list">
+                <listEntry value="-1">(none)</listEntry>
+                <listEntry value="0">12 AM</listEntry>
+                <listEntry value="60">1 AM</listEntry>
+                <listEntry value="120">2 AM</listEntry>
+                <listEntry value="180">3 AM</listEntry>
+                <listEntry value="240">4 AM</listEntry>
+                <listEntry value="300">5 AM</listEntry>
+                <listEntry value="360">6 AM</listEntry>
+                <listEntry value="420">7 AM</listEntry>
+                <listEntry value="480">8 AM</listEntry>
+                <listEntry value="540">9 AM</listEntry>
+                <listEntry value="600">10 AM</listEntry>
+                <listEntry value="660">11 AM</listEntry>
+                <listEntry value="720">12 PM</listEntry>
+                <listEntry value="780">1 PM</listEntry>
+                <listEntry value="840">2 PM</listEntry>
+                <listEntry value="900">3 PM</listEntry>
+                <listEntry value="960">4 PM</listEntry>
+                <listEntry value="1020">5 PM</listEntry>
+                <listEntry value="1080">6 PM</listEntry>
+                <listEntry value="1140">7 PM</listEntry>
+                <listEntry value="1200">8 PM</listEntry>
+                <listEntry value="1260">9 PM</listEntry>
+                <listEntry value="1320">10 PM</listEntry>
+                <listEntry value="1380">11 PM</listEntry>
+            </settingConfig>
+        </setting>
+        <setting propertyKey="@Properties.cfgM17T3" title="Time 3">
+            <settingConfig type="list">
+                <listEntry value="-1">(none)</listEntry>
+                <listEntry value="0">12 AM</listEntry>
+                <listEntry value="60">1 AM</listEntry>
+                <listEntry value="120">2 AM</listEntry>
+                <listEntry value="180">3 AM</listEntry>
+                <listEntry value="240">4 AM</listEntry>
+                <listEntry value="300">5 AM</listEntry>
+                <listEntry value="360">6 AM</listEntry>
+                <listEntry value="420">7 AM</listEntry>
+                <listEntry value="480">8 AM</listEntry>
+                <listEntry value="540">9 AM</listEntry>
+                <listEntry value="600">10 AM</listEntry>
+                <listEntry value="660">11 AM</listEntry>
+                <listEntry value="720">12 PM</listEntry>
+                <listEntry value="780">1 PM</listEntry>
+                <listEntry value="840">2 PM</listEntry>
+                <listEntry value="900">3 PM</listEntry>
+                <listEntry value="960">4 PM</listEntry>
+                <listEntry value="1020">5 PM</listEntry>
+                <listEntry value="1080">6 PM</listEntry>
+                <listEntry value="1140">7 PM</listEntry>
+                <listEntry value="1200">8 PM</listEntry>
+                <listEntry value="1260">9 PM</listEntry>
+                <listEntry value="1320">10 PM</listEntry>
+                <listEntry value="1380">11 PM</listEntry>
+            </settingConfig>
+        </setting>
+        <setting propertyKey="@Properties.cfgM17T4" title="Time 4">
+            <settingConfig type="list">
+                <listEntry value="-1">(none)</listEntry>
+                <listEntry value="0">12 AM</listEntry>
+                <listEntry value="60">1 AM</listEntry>
+                <listEntry value="120">2 AM</listEntry>
+                <listEntry value="180">3 AM</listEntry>
+                <listEntry value="240">4 AM</listEntry>
+                <listEntry value="300">5 AM</listEntry>
+                <listEntry value="360">6 AM</listEntry>
+                <listEntry value="420">7 AM</listEntry>
+                <listEntry value="480">8 AM</listEntry>
+                <listEntry value="540">9 AM</listEntry>
+                <listEntry value="600">10 AM</listEntry>
+                <listEntry value="660">11 AM</listEntry>
+                <listEntry value="720">12 PM</listEntry>
+                <listEntry value="780">1 PM</listEntry>
+                <listEntry value="840">2 PM</listEntry>
+                <listEntry value="900">3 PM</listEntry>
+                <listEntry value="960">4 PM</listEntry>
+                <listEntry value="1020">5 PM</listEntry>
+                <listEntry value="1080">6 PM</listEntry>
+                <listEntry value="1140">7 PM</listEntry>
+                <listEntry value="1200">8 PM</listEntry>
+                <listEntry value="1260">9 PM</listEntry>
+                <listEntry value="1320">10 PM</listEntry>
+                <listEntry value="1380">11 PM</listEntry>
+            </settingConfig>
+        </setting>
+        <setting propertyKey="@Properties.cfgM17On" title="Reminders on">
+            <settingConfig type="boolean" />
+        </setting>
+    </group>
+
+    <group id="med18Grp" title="Medication 18">
+        <setting propertyKey="@Properties.cfgM18Name" title="Name" prompt="Leave blank to disable this slot">
+            <settingConfig type="alphaNumeric" maxLength="24" />
+        </setting>
+        <setting propertyKey="@Properties.cfgM18Dose" title="Dose" prompt="e.g. 25 mg">
+            <settingConfig type="alphaNumeric" maxLength="16" />
+        </setting>
+        <setting propertyKey="@Properties.cfgM18Days" title="Days">
+            <settingConfig type="list">
+                <listEntry value="127">Every day</listEntry>
+                <listEntry value="62">Weekdays (Mon-Fri)</listEntry>
+                <listEntry value="65">Weekends (Sat-Sun)</listEntry>
+            </settingConfig>
+        </setting>
+        <setting propertyKey="@Properties.cfgM18T1" title="Time 1">
+            <settingConfig type="list">
+                <listEntry value="-1">(none)</listEntry>
+                <listEntry value="0">12 AM</listEntry>
+                <listEntry value="60">1 AM</listEntry>
+                <listEntry value="120">2 AM</listEntry>
+                <listEntry value="180">3 AM</listEntry>
+                <listEntry value="240">4 AM</listEntry>
+                <listEntry value="300">5 AM</listEntry>
+                <listEntry value="360">6 AM</listEntry>
+                <listEntry value="420">7 AM</listEntry>
+                <listEntry value="480">8 AM</listEntry>
+                <listEntry value="540">9 AM</listEntry>
+                <listEntry value="600">10 AM</listEntry>
+                <listEntry value="660">11 AM</listEntry>
+                <listEntry value="720">12 PM</listEntry>
+                <listEntry value="780">1 PM</listEntry>
+                <listEntry value="840">2 PM</listEntry>
+                <listEntry value="900">3 PM</listEntry>
+                <listEntry value="960">4 PM</listEntry>
+                <listEntry value="1020">5 PM</listEntry>
+                <listEntry value="1080">6 PM</listEntry>
+                <listEntry value="1140">7 PM</listEntry>
+                <listEntry value="1200">8 PM</listEntry>
+                <listEntry value="1260">9 PM</listEntry>
+                <listEntry value="1320">10 PM</listEntry>
+                <listEntry value="1380">11 PM</listEntry>
+            </settingConfig>
+        </setting>
+        <setting propertyKey="@Properties.cfgM18T2" title="Time 2">
+            <settingConfig type="list">
+                <listEntry value="-1">(none)</listEntry>
+                <listEntry value="0">12 AM</listEntry>
+                <listEntry value="60">1 AM</listEntry>
+                <listEntry value="120">2 AM</listEntry>
+                <listEntry value="180">3 AM</listEntry>
+                <listEntry value="240">4 AM</listEntry>
+                <listEntry value="300">5 AM</listEntry>
+                <listEntry value="360">6 AM</listEntry>
+                <listEntry value="420">7 AM</listEntry>
+                <listEntry value="480">8 AM</listEntry>
+                <listEntry value="540">9 AM</listEntry>
+                <listEntry value="600">10 AM</listEntry>
+                <listEntry value="660">11 AM</listEntry>
+                <listEntry value="720">12 PM</listEntry>
+                <listEntry value="780">1 PM</listEntry>
+                <listEntry value="840">2 PM</listEntry>
+                <listEntry value="900">3 PM</listEntry>
+                <listEntry value="960">4 PM</listEntry>
+                <listEntry value="1020">5 PM</listEntry>
+                <listEntry value="1080">6 PM</listEntry>
+                <listEntry value="1140">7 PM</listEntry>
+                <listEntry value="1200">8 PM</listEntry>
+                <listEntry value="1260">9 PM</listEntry>
+                <listEntry value="1320">10 PM</listEntry>
+                <listEntry value="1380">11 PM</listEntry>
+            </settingConfig>
+        </setting>
+        <setting propertyKey="@Properties.cfgM18T3" title="Time 3">
+            <settingConfig type="list">
+                <listEntry value="-1">(none)</listEntry>
+                <listEntry value="0">12 AM</listEntry>
+                <listEntry value="60">1 AM</listEntry>
+                <listEntry value="120">2 AM</listEntry>
+                <listEntry value="180">3 AM</listEntry>
+                <listEntry value="240">4 AM</listEntry>
+                <listEntry value="300">5 AM</listEntry>
+                <listEntry value="360">6 AM</listEntry>
+                <listEntry value="420">7 AM</listEntry>
+                <listEntry value="480">8 AM</listEntry>
+                <listEntry value="540">9 AM</listEntry>
+                <listEntry value="600">10 AM</listEntry>
+                <listEntry value="660">11 AM</listEntry>
+                <listEntry value="720">12 PM</listEntry>
+                <listEntry value="780">1 PM</listEntry>
+                <listEntry value="840">2 PM</listEntry>
+                <listEntry value="900">3 PM</listEntry>
+                <listEntry value="960">4 PM</listEntry>
+                <listEntry value="1020">5 PM</listEntry>
+                <listEntry value="1080">6 PM</listEntry>
+                <listEntry value="1140">7 PM</listEntry>
+                <listEntry value="1200">8 PM</listEntry>
+                <listEntry value="1260">9 PM</listEntry>
+                <listEntry value="1320">10 PM</listEntry>
+                <listEntry value="1380">11 PM</listEntry>
+            </settingConfig>
+        </setting>
+        <setting propertyKey="@Properties.cfgM18T4" title="Time 4">
+            <settingConfig type="list">
+                <listEntry value="-1">(none)</listEntry>
+                <listEntry value="0">12 AM</listEntry>
+                <listEntry value="60">1 AM</listEntry>
+                <listEntry value="120">2 AM</listEntry>
+                <listEntry value="180">3 AM</listEntry>
+                <listEntry value="240">4 AM</listEntry>
+                <listEntry value="300">5 AM</listEntry>
+                <listEntry value="360">6 AM</listEntry>
+                <listEntry value="420">7 AM</listEntry>
+                <listEntry value="480">8 AM</listEntry>
+                <listEntry value="540">9 AM</listEntry>
+                <listEntry value="600">10 AM</listEntry>
+                <listEntry value="660">11 AM</listEntry>
+                <listEntry value="720">12 PM</listEntry>
+                <listEntry value="780">1 PM</listEntry>
+                <listEntry value="840">2 PM</listEntry>
+                <listEntry value="900">3 PM</listEntry>
+                <listEntry value="960">4 PM</listEntry>
+                <listEntry value="1020">5 PM</listEntry>
+                <listEntry value="1080">6 PM</listEntry>
+                <listEntry value="1140">7 PM</listEntry>
+                <listEntry value="1200">8 PM</listEntry>
+                <listEntry value="1260">9 PM</listEntry>
+                <listEntry value="1320">10 PM</listEntry>
+                <listEntry value="1380">11 PM</listEntry>
+            </settingConfig>
+        </setting>
+        <setting propertyKey="@Properties.cfgM18On" title="Reminders on">
             <settingConfig type="boolean" />
         </setting>
     </group>

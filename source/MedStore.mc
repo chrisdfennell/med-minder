@@ -19,7 +19,7 @@ const LOG_RETENTION_DAYS = 90;
 // Number of fixed medication slots exposed in phone settings. Must match the
 // cfgM<n>* properties generated in resources/settings/. Bump this and
 // regenerate the settings/properties XML to offer more slots.
-const SLOT_COUNT = 14;
+const SLOT_COUNT = 18;
 const TIMES_PER_MED = 4;
 
 // MedStore owns all persistence. Phone settings are the source of truth for the
