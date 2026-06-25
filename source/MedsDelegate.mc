@@ -49,7 +49,8 @@ class MedsDelegate extends WatchUi.BehaviorDelegate {
         if (index < 0 || index >= view.meds.size()) {
             return;
         }
-        WatchUi.pushView(new MedDetailView(view.meds[index]), new MedDetailDelegate(), WatchUi.SLIDE_LEFT);
+        var med = view.meds[index];
+        WatchUi.pushView(new MedDetailView(med), new MedDetailDelegate(med), WatchUi.SLIDE_LEFT);
     }
 
     function onSwipe(evt as WatchUi.SwipeEvent) as Boolean {

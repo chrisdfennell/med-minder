@@ -43,9 +43,10 @@ class MedDetailView extends WatchUi.View {
             fields.add(["Reminders", "Off"]);
         }
 
-        // Lay the fields out evenly in the lower portion of the screen.
+        // Lay the fields out evenly in the lower portion of the screen, leaving
+        // room at the bottom for the edit hint.
         var top = h * 0.30;
-        var bottom = h * 0.92;
+        var bottom = h * 0.86;
         var slot = (bottom - top) / fields.size();
         for (var i = 0; i < fields.size(); i++) {
             var pair = fields[i] as Array;
@@ -57,5 +58,10 @@ class MedDetailView extends WatchUi.View {
             dc.drawText(w / 2, cy + 10, Graphics.FONT_XTINY, pair[1] as String,
                 Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
         }
+
+        // Edit hint
+        dc.setColor(0x5AC8FA, Graphics.COLOR_TRANSPARENT);
+        dc.drawText(w / 2, h * 0.94, Graphics.FONT_XTINY, "START: edit schedule",
+            Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
     }
 }

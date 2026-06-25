@@ -1,11 +1,24 @@
 import Toybox.Lang;
 import Toybox.WatchUi;
 
-// BACK or a right-swipe returns to the medicine list.
+// START or a tap opens the on-watch schedule editor for this med. BACK or a
+// right-swipe returns to the medicine list.
 class MedDetailDelegate extends WatchUi.BehaviorDelegate {
+    var med as Dictionary;
 
-    function initialize() {
+    function initialize(m as Dictionary) {
         BehaviorDelegate.initialize();
+        med = m;
+    }
+
+    function onSelect() as Boolean {
+        openMedEditor(med);
+        return true;
+    }
+
+    function onTap(evt as WatchUi.ClickEvent) as Boolean {
+        openMedEditor(med);
+        return true;
     }
 
     function onBack() as Boolean {

@@ -24,7 +24,8 @@ MEDICINE LIST
 • Tap any med for full details: dose, frequency, times, and which days.
 
 ADD YOUR MEDS
-• Open MedMinder's settings in the Garmin Connect app and fill in any of 18 medication slots — each its own collapsible section with name, dose, days, and up to four daily reminder times from dropdown pickers.
+• Open MedMinder's settings in the Garmin Connect app and type a name (and optional dose) into any of 18 medication slots — all save together in one sync.
+• Then set each med's schedule right on the watch: pick the reminder times, choose the days, and turn reminders on or off. No more entering one medicine at a time.
 • Works with both buttons and touchscreens, on round MIP and AMOLED watches.
 
 Not a medical device. MedMinder helps you remember and record doses; always follow your prescriber's and pharmacist's instructions.
@@ -32,8 +33,8 @@ Not a medical device. MedMinder helps you remember and record doses; always foll
 ## Category
 Health & Fitness  (Productivity is an acceptable alternative)
 
-## What's new (v1.3.0)
-Today's doses with time-grouping and take-all, an adherence streak, a medicine list with per-med detail, a glance, and up to 18 medications added from the Garmin Connect app — each in its own collapsible section with day and hourly time pickers.
+## What's new (v1.4.0)
+Faster setup: type your medication names (and doses) in the Garmin Connect app — all 18 slots now save in a single sync — then set each med's reminder times, days, and on/off switch right on the watch. No more entering and saving one medicine at a time.
 
 ## Permissions
 - **Background** — reserved for upcoming dose reminders. (No location, no internet, no health data is accessed.)
@@ -49,5 +50,5 @@ Today's doses with time-grouping and take-all, an adherence streak, a medicine l
 - [ ] **`DEBUG_SEED = false`** in `source/DebugSeed.mc` (it is, by default). For a fully clean build you can also delete `DebugSeed.mc` and its call in `MedMinderApp.onStart`.
 - [ ] **Developer verification** complete on the portal (required to list apps).
 - [ ] Build the package: `./build.ps1 -Export` → `bin/MedMinder.iq`.
-- [ ] Test the **medication slots** flow: set name/dose/days/times in Garmin Connect, sync, and confirm they appear on the watch's Today and Medicine list.
+- [ ] Test the **hybrid entry** flow: set several names/doses in Garmin Connect, sync, and confirm all save in one shot and appear on the watch; then set times/days/on-off on the watch (Medications → med → START) and confirm Today reflects them and they survive a re-sync.
 - [ ] Confirm the app launches and the medicine list is empty on first run (fresh install).

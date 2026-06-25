@@ -17,15 +17,23 @@ const ALL_DAYS = 0x7F; // bit0=Sun .. bit6=Sat
 const LOG_RETENTION_DAYS = 90;
 
 // Number of fixed medication slots exposed in phone settings. Must match the
-// cfgM<n>* properties generated in resources/settings/. Bump this and
-// regenerate the settings/properties XML to offer more slots.
+// cfgM<n>Name / cfgM<n>Dose properties generated in resources/settings/. Bump
+// this and regenerate the settings/properties XML to offer more slots.
 const SLOT_COUNT = 18;
-const TIMES_PER_MED = 4;
 
-// MedStore owns all persistence. Phone settings are the source of truth for the
-// med list: importFromSettings() rebuilds the watch-owned list from the fixed
-// cfgM<n>* slots on every launch and settings sync. The adherence log is keyed
-// by med id (= slot number), which stays stable as long as a med keeps its slot.
+// Max scheduled times a med may have, enforced by the on-watch editor. Phone
+// settings no longer carry times, so this is a UI cap only (not a sync limit).
+const MAX_TIMES = 6;
+
+// MedStore owns all persistence. The data model is HYBRID: phone settings carry
+// only each med's Name and Dose (kept tiny so all slots save in one sync, well
+// under Garmin's 8 KB properties cap). The SCHEDULE — times, active days, and
+// whether reminders are on — is owned and edited on the watch.
+//
+// importFromSettings() MERGES on every launch and settings sync: it refreshes
+// name/dose from the phone slots while preserving the watch-owned schedule. The
+// adherence log is keyed by med id (= slot number), stable as long as a med
+// keeps its slot.
 //
 // Values come back from Storage as a poly ValueType, so reads are cast at the
 // point of use (Number/String/Boolean/Array) to satisfy strict type checking.
@@ -108,6 +116,21 @@ class MedStore {
         return label;
     }
 
+    // Persist the on-watch schedule for one med (matched by id). Name and dose
+    // are not touched here — they come from phone settings.
+    static function putSchedule(medId as Number, times as Array<Number>, days as Number, enabled as Boolean) as Void {
+        var meds = loadMeds();
+        for (var i = 0; i < meds.size(); i++) {
+            if ((meds[i]["id"] as Number) == medId) {
+                meds[i]["times"] = times;
+                meds[i]["days"] = days;
+                meds[i]["enabled"] = enabled;
+                saveMeds(meds);
+                return;
+            }
+        }
+    }
+
     static function removeMed(medId as Number) as Void {
         var meds = loadMeds();
         var out = [] as Array<Dictionary>;
@@ -121,7 +144,7 @@ class MedStore {
 
     // ---- phone settings import ----
 
-    // Typed, null-safe property reads. Properties defined in properties.xml carry
+    // Null-safe property read. Properties defined in properties.xml carry
     // defaults, but a sync mid-write can transiently return null, so we guard.
     static function propStr(key as String) as String {
         var v;
@@ -129,57 +152,45 @@ class MedStore {
         return (v == null) ? "" : (v as String);
     }
 
-    static function propNum(key as String, dflt as Number) as Number {
-        var v;
-        try { v = Application.Properties.getValue(key); } catch (ex) { v = null; }
-        return (v == null) ? dflt : (v as Number);
-    }
-
-    static function propBool(key as String, dflt as Boolean) as Boolean {
-        var v;
-        try { v = Application.Properties.getValue(key); } catch (ex) { v = null; }
-        return (v == null) ? dflt : (v as Boolean);
-    }
-
-    // Rebuild the watch-owned med list from the fixed cfgM<n>* phone-settings
-    // slots. A blank Name means an empty/disabled slot and is skipped. Each med's
-    // id is its slot number, so the adherence log (keyed by id) stays stable.
+    // Merge the phone slots into the watch-owned med list. Each slot carries only
+    // Name and Dose; a blank Name means an empty/disabled slot and is skipped.
+    // For a slot whose med already exists (matched by id = slot number), only
+    // name/dose are refreshed — the watch-owned schedule (times/days/enabled) is
+    // preserved. New slots get an empty default schedule, edited on the watch.
     static function importFromSettings() as Void {
-        var meds = [] as Array<Dictionary>;
+        var existing = loadMeds();
+        var out = [] as Array<Dictionary>;
         for (var i = 1; i <= SLOT_COUNT; i++) {
             var p = "cfgM" + i.format("%d");
             var name = strTrim(propStr(p + "Name"));
             if (name.length() == 0) {
                 continue;
             }
-            var times = [] as Array<Number>;
-            for (var t = 1; t <= TIMES_PER_MED; t++) {
-                var mins = propNum(p + "T" + t.format("%d"), -1);
-                if (mins >= 0 && !contains(times, mins)) {
-                    times.add(mins);
+            var dose = strTrim(propStr(p + "Dose"));
+            var prior = null as Dictionary?;
+            for (var k = 0; k < existing.size(); k++) {
+                if ((existing[k]["id"] as Number) == i) {
+                    prior = existing[k];
+                    break;
                 }
             }
-            // sort times ascending (insertion sort)
-            for (var a = 1; a < times.size(); a++) {
-                var key = times[a];
-                var b = a - 1;
-                while (b >= 0 && times[b] > key) {
-                    times[b + 1] = times[b];
-                    b--;
-                }
-                times[b + 1] = key;
+            if (prior != null) {
+                prior["name"] = name;
+                prior["dose"] = dose;
+                out.add(prior);
+            } else {
+                out.add({
+                    "id" => i,
+                    "name" => name,
+                    "dose" => dose,
+                    "freq" => "",
+                    "times" => [] as Array<Number>,
+                    "days" => ALL_DAYS,
+                    "enabled" => true
+                });
             }
-            meds.add({
-                "id" => i,
-                "name" => name,
-                "dose" => strTrim(propStr(p + "Dose")),
-                "freq" => "",
-                "times" => times,
-                "days" => propNum(p + "Days", ALL_DAYS),
-                "enabled" => propBool(p + "On", true)
-            });
         }
-        saveMeds(meds);
+        saveMeds(out);
     }
 
     // ---- adherence log ----

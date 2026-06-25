@@ -60,7 +60,12 @@ class MedsView extends WatchUi.View {
 
         if (meds.size() == 0) {
             dc.setColor(0xAAAAAA, Graphics.COLOR_TRANSPARENT);
-            dc.drawText(w / 2, h / 2, Graphics.FONT_SMALL, "No medications yet",
+            dc.drawText(w / 2, h * 0.44, Graphics.FONT_SMALL, "No medications yet",
+                Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
+            dc.setColor(0x7C828C, Graphics.COLOR_TRANSPARENT);
+            dc.drawText(w / 2, h * 0.56, Graphics.FONT_XTINY, "Add names in phone settings,",
+                Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
+            dc.drawText(w / 2, h * 0.63, Graphics.FONT_XTINY, "then set times here",
                 Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
             return;
         }

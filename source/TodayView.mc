@@ -110,11 +110,15 @@ class TodayView extends WatchUi.View {
             Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
 
         if (items.size() == 0) {
+            // Meds can exist with no doses due today — either none are scheduled
+            // yet (set times on the watch) or today isn't one of their days.
+            var hasMeds = MedStore.loadMeds().size() > 0;
             dc.setColor(0xAAAAAA, Graphics.COLOR_TRANSPARENT);
-            dc.drawText(w / 2, h / 2, Graphics.FONT_SMALL, "No meds yet",
+            dc.drawText(w / 2, h / 2, Graphics.FONT_SMALL, hasMeds ? "Nothing due today" : "No meds yet",
                 Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
             dc.setColor(0x666C76, Graphics.COLOR_TRANSPARENT);
-            dc.drawText(w / 2, h / 2 + 26, Graphics.FONT_XTINY, "Add in phone settings",
+            dc.drawText(w / 2, h / 2 + 26, Graphics.FONT_XTINY,
+                hasMeds ? "Set times in Medications" : "Add names in phone settings",
                 Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
             return;
         }
