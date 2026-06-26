@@ -33,11 +33,11 @@ Not a medical device. MedMinder helps you remember and record doses; always foll
 ## Category
 Health & Fitness  (Productivity is an acceptable alternative)
 
-## What's new (v1.4.0)
-Faster setup: type your medication names (and doses) in the Garmin Connect app — all 18 slots now save in a single sync — then set each med's reminder times, days, and on/off switch right on the watch. No more entering and saving one medicine at a time.
+## What's new (v1.5.0)
+Reminders now work: when a dose comes due, MedMinder alerts you on the watch and opens to today's list so you can mark it taken — even when the app is closed. Set each med's times, days, and reminder switch right on the watch.
 
 ## Permissions
-- **Background** — reserved for upcoming dose reminders. (No location, no internet, no health data is accessed.)
+- **Background** — runs the dose-reminder service that alerts you when it's time to take a medication. (No location, no internet, no health data is accessed.)
 
 ## Store assets to upload
 - App icon: `assets/store_icon.png` (square).

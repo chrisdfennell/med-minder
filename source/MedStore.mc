@@ -6,6 +6,10 @@ import Toybox.Time.Gregorian;
 // ---- Storage keys & constants -------------------------------------------------
 const KEY_MEDS = "meds";
 const KEY_LOG = "log";
+// High-water mark (epoch secs) for the reminder background service: the time of
+// its last check. Doses that come due after this and on/before "now" get one
+// reminder, then the mark advances past them so they never re-alert.
+const KEY_LASTNOTIFY = "lastnotify";
 
 const STATUS_PENDING = 0;
 const STATUS_TAKEN = 1;
@@ -309,6 +313,64 @@ class MedStore {
             }
         }
         return null;
+    }
+
+    // ---- reminders (background service) ----
+
+    // Doses that have come due since the last reminder check and are still
+    // pending. The window is (lastCheck, now], so every due time falls in
+    // exactly one interval — no gaps, no double-alerts. Capped at 30 minutes
+    // of look-back so that after the watch is off for a while we don't fire a
+    // flurry of stale reminders for long-past doses on the next tick.
+    static function dueReminders() as Array<Dictionary> {
+        var now = Time.now().value();
+        var start = now - 1800;
+        var last = Application.Storage.getValue(KEY_LASTNOTIFY);
+        if (last != null && (last as Number) > start) {
+            start = last as Number;
+        }
+        var doses = todayDoses();
+        var out = [] as Array<Dictionary>;
+        for (var i = 0; i < doses.size(); i++) {
+            var d = doses[i];
+            var due = d["due"] as Number;
+            if ((d["status"] as Number) == STATUS_PENDING && due > start && due <= now) {
+                out.add(d);
+            }
+        }
+        return out;
+    }
+
+    // Advance the high-water mark to now, so doses already surfaced this tick
+    // are not reminded again on the next one.
+    static function markReminderCheck() as Void {
+        Application.Storage.setValue(KEY_LASTNOTIFY, Time.now().value());
+    }
+
+    // The wake message shown by requestApplicationWake (max 255 bytes; we keep
+    // well under). One med names it (with dose); several are listed by name.
+    static function reminderMessage(due as Array<Dictionary>) as String {
+        var msg;
+        if (due.size() == 1) {
+            var d = due[0];
+            msg = "Time to take " + (d["name"] as String);
+            var dose = d["dose"] as String;
+            if (dose != null && dose.length() > 0) {
+                msg += " (" + dose + ")";
+            }
+        } else {
+            msg = "Time for " + due.size().format("%d") + " meds: ";
+            for (var i = 0; i < due.size(); i++) {
+                if (i > 0) {
+                    msg += ", ";
+                }
+                msg += (due[i]["name"] as String);
+            }
+        }
+        if (msg.length() > 200) {
+            msg = msg.substring(0, 200);
+        }
+        return msg;
     }
 
     // Consecutive days (ending today) where every dose due-so-far was taken.

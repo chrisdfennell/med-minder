@@ -8,7 +8,7 @@
         name="@Strings.AppName"
         entry="MedMinderApp"
         launcherIcon="@Drawables.LauncherIcon"
-        version="1.4.0"
+        version="1.5.0"
         minSdkVersion="4.0.0">
 
         <iq:products>
@@ -72,8 +72,9 @@
         </iq:products>
 
         <iq:permissions>
-            <!-- Background service is added in milestone M2 (reminders). Declaring
-                 the permission now avoids a re-approval prompt for users later. -->
+            <!-- Required by the reminder background service (ReminderService):
+                 it registers a periodic temporal event and calls
+                 Background.requestApplicationWake when a dose comes due. -->
             <iq:uses-permission id="Background"/>
         </iq:permissions>
     </iq:application>
