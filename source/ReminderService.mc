@@ -21,16 +21,28 @@ class ReminderService extends System.ServiceDelegate {
     }
 
     function onTemporalEvent() as Void {
-        var due = MedStore.dueReminders();
-        // Advance the high-water mark first so each dose alerts exactly once,
-        // whether or not we end up waking the app this tick.
-        MedStore.markReminderCheck();
-        if (due.size() > 0) {
-            // Terminal action of the background run — requestApplicationWake is
-            // the last call (we do not also Background.exit, which could race
-            // the wake request on some devices).
-            Background.requestApplicationWake(MedStore.reminderMessage(due));
-            return;
+        // Wrapped so a background exception (e.g. exceeding the tight bg memory
+        // budget) is RECORDED rather than silently killing the process — that
+        // silent death is the classic "reminders never fire" failure. The log
+        // is read back on-watch in DiagnosticsView. Debugging instrumentation.
+        try {
+            var meds = MedStore.loadMeds();
+            var due = MedStore.dueReminders();
+            // Advance the high-water mark first so each dose alerts exactly once,
+            // whether or not we end up waking the app this tick.
+            MedStore.markReminderCheck();
+            if (due.size() > 0) {
+                // Terminal action of the background run — requestApplicationWake
+                // is the last call (we do not also Background.exit, which could
+                // race the wake request on some devices).
+                MedStore.logBg("WAKE meds=" + meds.size().format("%d") + " due=" + due.size().format("%d"));
+                Background.requestApplicationWake(MedStore.reminderMessage(due));
+                return;
+            }
+            MedStore.logBg("tick meds=" + meds.size().format("%d") + " due=0");
+        } catch (ex) {
+            var m = ex.getErrorMessage();
+            MedStore.logBg("ERR " + ((m == null) ? "?" : m));
         }
         Background.exit(null);
     }

@@ -10,6 +10,11 @@ const KEY_LOG = "log";
 // its last check. Doses that come due after this and on/before "now" get one
 // reminder, then the mark advances past them so they never re-alert.
 const KEY_LASTNOTIFY = "lastnotify";
+// Debug ring buffer (newest last): the background service appends one entry per
+// run so we can see ON THE WATCH whether it is firing at all, what it saw, and
+// any caught exception. Surfaced in DiagnosticsView. Temporary debugging aid.
+const KEY_BGLOG = "bglog";
+const BGLOG_MAX = 12;
 
 const STATUS_PENDING = 0;
 const STATUS_TAKEN = 1;
@@ -345,6 +350,36 @@ class MedStore {
     // are not reminded again on the next one.
     static function markReminderCheck() as Void {
         Application.Storage.setValue(KEY_LASTNOTIFY, Time.now().value());
+    }
+
+    // Epoch of the last reminder check (0 if never), for the diagnostics screen.
+    static function lastNotify() as Number {
+        var v = Application.Storage.getValue(KEY_LASTNOTIFY);
+        return (v == null) ? 0 : (v as Number);
+    }
+
+    // Append one line to the background diagnostic log (newest last), capped at
+    // BGLOG_MAX. Safe to call from the background process (Storage is shared and
+    // persisted across the fg/bg split; we never touch Properties here).
+    static function logBg(msg as String) as Void {
+        var log = Application.Storage.getValue(KEY_BGLOG) as Array<Dictionary>;
+        if (log == null) {
+            log = [] as Array<Dictionary>;
+        }
+        log.add({ "t" => Time.now().value(), "msg" => msg });
+        if (log.size() > BGLOG_MAX) {
+            var trimmed = [] as Array<Dictionary>;
+            for (var i = log.size() - BGLOG_MAX; i < log.size(); i++) {
+                trimmed.add(log[i]);
+            }
+            log = trimmed;
+        }
+        Application.Storage.setValue(KEY_BGLOG, log);
+    }
+
+    static function bgLog() as Array<Dictionary> {
+        var log = Application.Storage.getValue(KEY_BGLOG) as Array<Dictionary>;
+        return (log == null) ? ([] as Array<Dictionary>) : (log as Array<Dictionary>);
     }
 
     // The wake message shown by requestApplicationWake (max 255 bytes; we keep

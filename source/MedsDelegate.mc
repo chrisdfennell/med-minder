@@ -26,6 +26,13 @@ class MedsDelegate extends WatchUi.BehaviorDelegate {
         return true;
     }
 
+    // MENU opens the reminder diagnostics screen (debugging aid).
+    function onMenu() as Boolean {
+        var v = new DiagnosticsView();
+        WatchUi.pushView(v, new DiagnosticsDelegate(v), WatchUi.SLIDE_LEFT);
+        return true;
+    }
+
     // START on the selected med -> open its detail.
     function onSelect() as Boolean {
         openDetail(view.selected);

@@ -8,7 +8,7 @@
         name="@Strings.AppName"
         entry="MedMinderApp"
         launcherIcon="@Drawables.LauncherIcon"
-        version="1.5.0"
+        version="1.5.1"
         minSdkVersion="4.0.0">
 
         <iq:products>

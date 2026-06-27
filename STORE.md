@@ -33,8 +33,8 @@ Not a medical device. MedMinder helps you remember and record doses; always foll
 ## Category
 Health & Fitness  (Productivity is an acceptable alternative)
 
-## What's new (v1.5.0)
-Reminders now work: when a dose comes due, MedMinder alerts you on the watch and opens to today's list so you can mark it taken — even when the app is closed. Set each med's times, days, and reminder switch right on the watch.
+## What's new (v1.5.1)
+Reliability and diagnostics: the reminder background service now records what it does on every run and recovers from errors instead of failing silently. A new on-watch Diagnostics screen (Medications → MENU) shows whether reminders are firing, with a test-vibrate check.
 
 ## Permissions
 - **Background** — runs the dose-reminder service that alerts you when it's time to take a medication. (No location, no internet, no health data is accessed.)

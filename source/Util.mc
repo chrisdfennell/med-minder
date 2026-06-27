@@ -1,5 +1,6 @@
 import Toybox.Lang;
 import Toybox.System;
+import Toybox.Time;
 
 // Small string/time helpers kept free of any Toybox String API that varies
 // across SDK versions (no split/trim/toLower assumptions) so the parsing is
@@ -143,6 +144,30 @@ function formatTime(minutes as Number) as String {
         hh = 12;
     }
     return hh.format("%d") + ":" + m.format("%02d") + " " + ap;
+}
+
+// Compact "12s" / "5m" / "1h3m" / "2d" elapsed since a past epoch ("never" if
+// 0/future-clamped). Used by the diagnostics screen for "last bg run" etc.
+function agoLabel(epoch as Number) as String {
+    if (epoch <= 0) {
+        return "never";
+    }
+    var s = Time.now().value() - epoch;
+    if (s < 0) {
+        s = 0;
+    }
+    if (s < 60) {
+        return s.format("%d") + "s";
+    }
+    var m = s / 60;
+    if (m < 60) {
+        return m.format("%d") + "m";
+    }
+    var hh = m / 60;
+    if (hh < 24) {
+        return hh.format("%d") + "h" + (m % 60).format("%d") + "m";
+    }
+    return (hh / 24).format("%d") + "d";
 }
 
 // "Every day", or a short list like "Mon, Wed, Fri" from a day bitmask.
